@@ -1,0 +1,34 @@
+{
+    "name": "Inputs",
+    "maps": [
+        {
+            "name": "PlayerInputs",
+            "id": "fc03a9d5-1a4d-4ea0-8276-ac2cb4fa7c73",
+            "actions": [
+                {
+                    "name": "Fly",
+                    "type": "Button",
+                    "id": "5b87f996-1a37-4abb-878a-eecc384edadb",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "739c6941-b67e-4f4c-ad51-0b7582e5d8a5",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Fly",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
