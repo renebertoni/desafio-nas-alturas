@@ -9,7 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 126224482804909561}
-  - component: {fileID: 1095893806569171093}
+  - component: {fileID: 7474481218288373274}
+  - component: {fileID: 8134074473241104362}
+  - component: {fileID: -1285240786386673715}
   m_Layer: 0
   m_Name: Obstacle
   m_TagString: Obstacle
@@ -34,7 +36,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1095893806569171093
+--- !u!114 &7474481218288373274
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -43,10 +45,59 @@ MonoBehaviour:
   m_GameObject: {fileID: 126224482804909560}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 595ceac129b91bf4f9ae29f96841b925, type: 3}
+  m_Script: {fileID: 11500000, guid: 66585e61afb8fdb4a824450fe402b098, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 6
+  _offSet: 2
+  _isObstacle: 1
+--- !u!50 &8134074473241104362
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 126224482804909560}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!61 &-1285240786386673715
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 126224482804909560}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &126224482897428432
 GameObject:
   m_ObjectHideFlags: 0
@@ -60,7 +111,7 @@ GameObject:
   - component: {fileID: 25148761}
   m_Layer: 0
   m_Name: ObstacleBottom
-  m_TagString: Obstacle
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -197,10 +248,9 @@ GameObject:
   - component: {fileID: 126224484210790137}
   - component: {fileID: 126224484210790136}
   - component: {fileID: 2133200000}
-  - component: {fileID: 2133200001}
   m_Layer: 0
   m_Name: ObstacleUpper
-  m_TagString: Obstacle
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -324,24 +374,3 @@ PolygonCollider2D:
       - {x: 0.19999999, y: -1.155}
       - {x: 0.19999999, y: -1.0649999}
       - {x: 0.29, y: -0.255}
---- !u!50 &2133200001
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 126224484210790139}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 4

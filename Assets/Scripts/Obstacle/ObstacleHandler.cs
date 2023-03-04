@@ -1,29 +1,46 @@
 using UnityEngine;
+using System.Collections;
 
 public class ObstacleHandler : MonoBehaviour
 {
     [SerializeField] GameObject _obstacle;
     [SerializeField] int maxObstacles;
+    [SerializeField] float _heightOffset;
+    [SerializeField] float _timeToCreateObstacle;
+    Vector3 _startPosition;
 
     void Awake()
     {
-        for (int i = 1; i <= maxObstacles; i++)
+        for (int i = 0; i < maxObstacles; i++)
         {
-            Instantiate<GameObject>(_obstacle, transform.position * i, Quaternion.identity);
+            StartCoroutine(CreateObstacle(i));
         }
-    }
-    void OnEnable()
-    {
-        ObstacleLimitPosition.LimitPosition += OnLimitePosition;
+        var limitSize = TryGetComponent<Collider2D>(out Collider2D limitCollider) ? limitCollider.bounds.size.x : 0;
+        _startPosition = new Vector3(transform.position.x + (limitSize / 2), transform.position.y, transform.position.z);
     }
 
-    void OnDisable()
+    IEnumerator CreateObstacle(int index)
     {
-        ObstacleLimitPosition.LimitPosition -= OnLimitePosition;
+        yield return new WaitForSeconds(_timeToCreateObstacle * index);
+        var obstacle = Instantiate<GameObject>(_obstacle, RandomHeight(), Quaternion.identity);
     }
 
-    private void OnLimitePosition(Transform obstacle)
+    void ResetPosition(Transform obstacleTransform)
     {
-        obstacle.position = transform.position;
+        obstacleTransform.position = RandomHeight();
+    }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if(other.gameObject.CompareTag(Constants.OBSTACLE))
+        {
+            ResetPosition(other.gameObject.transform);
+        }    
+    }
+
+    Vector3 RandomHeight()
+    {
+        var randomHeight = Random.Range(-_heightOffset, _heightOffset);
+        return new Vector3(_startPosition.x, _startPosition.y + randomHeight, _startPosition.z);
     }
 }

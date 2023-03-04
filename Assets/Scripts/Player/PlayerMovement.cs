@@ -21,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
 
     void OnFly()
     {
+        _playerRigidbody.velocity = Vector2.zero;
         _playerRigidbody.AddForce(Vector2.up * _force, ForceMode2D.Impulse);
     }
 }
