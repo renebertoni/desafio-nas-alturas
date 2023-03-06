@@ -12,16 +12,23 @@ public class PlayerMovement : MonoBehaviour
 
     void OnEnable()
     {
-        PlayerInputs.Fly += OnFly;    
+        PlayerInputs.Fly += OnFly;
+        GameHandler.GameOver += StopMovement;
     }
     void OnDisable()
     {
-        PlayerInputs.Fly -= OnFly;    
+        PlayerInputs.Fly -= OnFly;
+        GameHandler.GameOver -= StopMovement;
     }
 
     void OnFly()
     {
         _playerRigidbody.velocity = Vector2.zero;
         _playerRigidbody.AddForce(Vector2.up * _force, ForceMode2D.Impulse);
+    }
+
+    void StopMovement()
+    {
+        _playerRigidbody.simulated = false;
     }
 }
