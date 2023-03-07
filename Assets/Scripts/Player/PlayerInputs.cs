@@ -23,14 +23,14 @@ public class PlayerInputs : MonoBehaviour
         GameHandler.GameOver -= OnGameOver;
     }
 
-    private void DoFly(InputAction.CallbackContext obj)
+    void DoFly(InputAction.CallbackContext obj)
     {
         if(!_gameOver)
             Fly?.Invoke();
         else
             RestartGame?.Invoke();
     }
-    private void OnGameOver()
+    void OnGameOver(int recordScore)
     {
         _gameOver = true;
     }

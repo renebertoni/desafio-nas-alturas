@@ -4,6 +4,7 @@ public class PlayerMovement : MonoBehaviour
 {
     Rigidbody2D _playerRigidbody;
     [SerializeField] float _force;
+    bool _isMoving;
 
     void Awake()
     {
@@ -13,12 +14,12 @@ public class PlayerMovement : MonoBehaviour
     void OnEnable()
     {
         PlayerInputs.Fly += OnFly;
-        GameHandler.GameOver += StopMovement;
+        GameHandler.GameOver += ToggleMovement;
     }
     void OnDisable()
     {
         PlayerInputs.Fly -= OnFly;
-        GameHandler.GameOver -= StopMovement;
+        GameHandler.GameOver -= ToggleMovement;
     }
 
     void OnFly()
@@ -27,8 +28,8 @@ public class PlayerMovement : MonoBehaviour
         _playerRigidbody.AddForce(Vector2.up * _force, ForceMode2D.Impulse);
     }
 
-    void StopMovement()
+    void ToggleMovement(int recordScore)
     {
-        _playerRigidbody.simulated = false;
+        _playerRigidbody.simulated = _isMoving;
     }
 }
