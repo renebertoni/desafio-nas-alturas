@@ -4,14 +4,15 @@ using UnityEngine.SceneManagement;
 
 public class GameHandler : MonoBehaviour
 {
-    public static Action<int> GameOver;
+    public static Action<int, int> GameOver;
 
-    public int Score = 0;
-    public int Record = 0;
+    [HideInInspector] public int Score { get; private set; }
+    [HideInInspector] public int Record { get; private set; }
 
     void Start()
     {
         Time.timeScale = 1;
+        Score = 0;
         Record = LoadScore(); 
     }
 
@@ -31,7 +32,7 @@ public class GameHandler : MonoBehaviour
     {
         Time.timeScale = 0;
         SaveScore();
-        GameOver?.Invoke(LoadScore());
+        GameOver?.Invoke(Score, LoadScore());
     }
 
     private void OnRestartGame()

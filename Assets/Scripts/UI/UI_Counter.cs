@@ -11,6 +11,7 @@ public class UI_Counter : MonoBehaviour
     void Awake()
     {
         _counter = GetComponent<TMP_Text>();
+        _counter.text = "0";
     }
 
     public void SetCounter(int value)

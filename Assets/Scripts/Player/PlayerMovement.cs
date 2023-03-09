@@ -28,7 +28,7 @@ public class PlayerMovement : MonoBehaviour
         _playerRigidbody.AddForce(Vector2.up * _force, ForceMode2D.Impulse);
     }
 
-    void ToggleMovement(int recordScore)
+    void ToggleMovement(int score, int record)
     {
         _playerRigidbody.simulated = _isMoving;
     }

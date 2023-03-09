@@ -10,7 +10,6 @@ public class UI_Handler : MonoBehaviour
     void Start()
     {
         _gameOver.SetActive(false);
-        _uiCounter.SetCounter(_gameHandler.Score);
     }
 
     void OnEnable()
@@ -25,10 +24,11 @@ public class UI_Handler : MonoBehaviour
         ObstaclePointField.AddScore -= OnAddScore;
     }
 
-    void OnGameOver(int recordScore)
+    void OnGameOver(int score, int record)
     {
         _gameOver.SetActive(true);
-        _uiScore.SetScore(recordScore);
+        _uiScore.SetScore(record);
+        _uiScore.SetMedal(score, record);
     }
 
     void OnAddScore()

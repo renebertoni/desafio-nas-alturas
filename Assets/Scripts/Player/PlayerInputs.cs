@@ -30,7 +30,7 @@ public class PlayerInputs : MonoBehaviour
         else
             RestartGame?.Invoke();
     }
-    void OnGameOver(int recordScore)
+    void OnGameOver(int score, int record)
     {
         _gameOver = true;
     }

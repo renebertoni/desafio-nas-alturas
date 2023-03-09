@@ -1,6 +1,5 @@
 using UnityEngine;
 
-[RequireComponent(typeof(AudioStorage))]
 public class AudioHandler : MonoBehaviour
 {
     AudioSource _audioSource;
@@ -18,7 +17,7 @@ public class AudioHandler : MonoBehaviour
 
     void Awake()
     {
-        _audioStorage = GetComponent<AudioStorage>();
+        _audioStorage = FindAnyObjectByType<AudioStorage>();
         _audioSource = GetComponent<AudioSource>();
     }
 
