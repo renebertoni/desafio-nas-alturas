@@ -28,7 +28,7 @@ public class Translation : MonoBehaviour
 
     void EnviromentTranslate()
     {
-        var offsset = Mathf.Repeat(_speed * Time.time, _realSize + _offSet);
+        var offsset = Mathf.Repeat(_speed * Time.time, _realSize/2f + _offSet);
         transform.position = _startPosition + (Vector3.left * offsset);
     }
 

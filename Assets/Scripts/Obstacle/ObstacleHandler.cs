@@ -16,7 +16,7 @@ public class ObstacleHandler : MonoBehaviour
             StartCoroutine(CreateObstacle(i));
         }
         var limitSize = TryGetComponent<Collider2D>(out Collider2D limitCollider) ? limitCollider.bounds.size.x : 0;
-        _startPosition = new Vector3(transform.position.x + (limitSize / 2), transform.position.y, transform.position.z);
+        _startPosition = new Vector3(transform.position.x + limitSize, transform.position.y, transform.position.z);
     }
 
     IEnumerator CreateObstacle(int index)

@@ -9,11 +9,15 @@ public class GameHandler : MonoBehaviour
     [HideInInspector] public int Score { get; private set; }
     [HideInInspector] public int Record { get; private set; }
 
+    [SerializeField] bool _multiplayer;
+    string _gameMode;
+
     void Start()
     {
         Time.timeScale = 1;
         Score = 0;
-        Record = LoadScore(); 
+        Record = LoadScore();
+        _gameMode = _multiplayer ? Constants.SCORE_MULTIPLAYER : Constants.SCORE;
     }
 
     void OnEnable()
@@ -37,20 +41,20 @@ public class GameHandler : MonoBehaviour
 
     private void OnRestartGame()
     {
-        SceneManager.LoadScene(Constants.LEVEL_01);
+        SceneManager.LoadScene(Constants.LEVEL_02);
     }
 
     void SaveScore()
     {
         if(Score > Record)
         {
-            PlayerPrefs.SetInt(Constants.SCORE, Score);
+            PlayerPrefs.SetInt(_gameMode, Score);
         }
     }
 
     int LoadScore()
     {
-        return PlayerPrefs.GetInt(Constants.SCORE);
+        return PlayerPrefs.GetInt(_gameMode);
     }
 
     public void SetScore(int value)

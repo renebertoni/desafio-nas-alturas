@@ -1,5 +1,5 @@
 {
-    "name": "Inputs",
+    "name": "Inputs 2",
     "maps": [
         {
             "name": "PlayerInputs",
@@ -19,7 +19,7 @@
                 {
                     "name": "",
                     "id": "739c6941-b67e-4f4c-ad51-0b7582e5d8a5",
-                    "path": "<Keyboard>/w",
+                    "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
