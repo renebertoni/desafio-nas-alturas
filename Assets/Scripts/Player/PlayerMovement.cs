@@ -6,22 +6,22 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float _force;
     bool _isMoving;
     GameObject _player;
+    Vector3 _startPosition;
 
     void Awake()
     {
         this._player = gameObject;
+        _startPosition = transform.position;
         _playerRigidbody = GetComponent<Rigidbody2D>();
     }
 
     void OnEnable()
     {
         PlayerInputs.Fly += DoFly;
-        GameHandler.GameOver += ToggleMovement;
     }
     void OnDisable()
     {
         PlayerInputs.Fly -= DoFly;
-        GameHandler.GameOver -= ToggleMovement;
     }
 
     void Update()
@@ -39,8 +39,8 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void ToggleMovement(int score, int record)
+    public void RestartPosition()
     {
-        _playerRigidbody.simulated = _isMoving;
+        transform.position = _startPosition;
     }
 }

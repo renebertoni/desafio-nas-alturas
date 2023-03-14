@@ -3,15 +3,15 @@ using System;
 
 public class ObjectCollision : MonoBehaviour
 {
-    public static Action Crash;
+    public static Action<GameObject> Crash;
 
     void OnCollisionEnter2D(Collision2D other)
     {
-        var otherGameObjetc = other.gameObject;
+        var otherGameObject = other.gameObject;
 
-        if( otherGameObjetc.CompareTag(Constants.PLAYER) )
+        if( otherGameObject.CompareTag(Constants.PLAYER) )
         {
-            Crash?.Invoke();    
+            Crash?.Invoke(otherGameObject);    
         }
     }
 }
