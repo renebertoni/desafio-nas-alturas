@@ -12,17 +12,21 @@ public class PlayerHandler : MonoBehaviour
     [SerializeField] ObstacleHandler _obstacleHandler;
     [SerializeField] GameObject _blockScreen;
     [SerializeField] TMP_Text _blockCounter;
+    [SerializeField] Camera _playerCamera;
     [SerializeField] List<GameObject> _enviroment;
     private PlayerMovement _playerMovement;
     private Rigidbody2D _playerRigidbody;
     private int _currentRespawnScore;
     private bool _playerIsDead;
+    private Canvas _blockedScreenCanvas;
+
 
 
     void Start()
     {
         _playerMovement = _player.GetComponent<PlayerMovement>();
         _playerRigidbody = _player.GetComponent<Rigidbody2D>();
+        _blockedScreenCanvas = _blockScreen.GetComponent<Canvas>();
         _currentRespawnScore = _playerRevive.reviveScoreAmount;
     }
 
@@ -92,6 +96,7 @@ public class PlayerHandler : MonoBehaviour
 
     void BlockScreen(bool status)
     {
+        if(_blockedScreenCanvas) _blockedScreenCanvas.worldCamera = _playerCamera;
         _blockScreen.SetActive(status);
         _blockCounter.text = _currentRespawnScore.ToString();
     }
